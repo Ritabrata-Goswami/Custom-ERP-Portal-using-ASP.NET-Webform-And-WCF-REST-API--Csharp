@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\entrywarehousemaster.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:entrywarehousemaster.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\entrywarehousemaster.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:entrywarehousemaster.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\entryvendormaster.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:entryvendormaster.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\entryvendormaster.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:entryvendormaster.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,50 +30,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "EntryWarehouseMaster.aspx.cs",
+              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryWarehouseMaster.aspx.cs",
+              "RelativeDocumentMoniker": "EntryWarehouseMaster.aspx.cs",
+              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryWarehouseMaster.aspx.cs",
+              "RelativeToolTip": "EntryWarehouseMaster.aspx.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAFgAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T18:32:57.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EntryWarehouseMaster.aspx",
+              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryWarehouseMaster.aspx",
+              "RelativeDocumentMoniker": "EntryWarehouseMaster.aspx",
+              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryWarehouseMaster.aspx",
+              "RelativeToolTip": "EntryWarehouseMaster.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-13T18:32:05.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\Web.config",
               "RelativeDocumentMoniker": "Web.config",
               "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\Web.config",
               "RelativeToolTip": "Web.config",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAsAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2025-10-12T14:23:33.06Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EntryVendorMaster.aspx.cs",
-              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryVendorMaster.aspx.cs",
-              "RelativeDocumentMoniker": "EntryVendorMaster.aspx.cs",
-              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryVendorMaster.aspx.cs",
-              "RelativeToolTip": "EntryVendorMaster.aspx.cs",
-              "ViewState": "AQIAAHgAAAAAAAAAAAAwwH4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T14:20:46.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EntryVendorMaster.aspx",
-              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryVendorMaster.aspx",
-              "RelativeDocumentMoniker": "EntryVendorMaster.aspx",
-              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\EntryVendorMaster.aspx",
-              "RelativeToolTip": "EntryVendorMaster.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-12T14:15:05.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Site.master",
               "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\Site.master",
               "RelativeDocumentMoniker": "Site.master",
@@ -86,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Site.master.cs",
               "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\Site.master.cs",
               "RelativeDocumentMoniker": "Site.master.cs",
@@ -94,8 +94,7 @@
               "RelativeToolTip": "Site.master.cs",
               "ViewState": "AQIAAEYAAAAAAAAAAAAAAFMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T13:25:49.861Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-11T13:25:49.861Z"
             }
           ]
         }

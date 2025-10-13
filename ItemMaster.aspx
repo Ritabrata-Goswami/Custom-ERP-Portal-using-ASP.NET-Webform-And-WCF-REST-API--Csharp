@@ -166,7 +166,7 @@
                                         runat="server" 
                                         CssClass="EditBtn" 
                                         Text="Edit Vendor" 
-                                        NavigateUrl='<%#Eval("VendorCode", "EditVendor.aspx?VendorCode={0}") %> ' 
+                                        NavigateUrl='<%#Eval("ItemCode", "EditVendor.aspx?ItemCode={0}") %> ' 
                                         Target="_blank">
                                     </asp:HyperLink>
                                 </div>
