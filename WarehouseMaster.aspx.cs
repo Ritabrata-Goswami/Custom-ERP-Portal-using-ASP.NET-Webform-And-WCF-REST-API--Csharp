@@ -63,4 +63,22 @@ public partial class WarehouseMaster : System.Web.UI.Page
             Conn.Close();
         }
     }
+
+
+    protected void WhsInvalidMasterData_DataBound(object sender, GridViewRowEventArgs e)
+    {
+                                        //Check if this is a data row (ignore header/footer)
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+                                        //Get the "Active" value from the current row's data
+            string activeStatus = DataBinder.Eval(e.Row.DataItem, "Active").ToString();
+
+            if (activeStatus == "No")
+            {
+                e.Row.BackColor = System.Drawing.Color.PaleVioletRed;
+                e.Row.ForeColor = System.Drawing.Color.White; 
+            }
+        }
+    }
+
 }

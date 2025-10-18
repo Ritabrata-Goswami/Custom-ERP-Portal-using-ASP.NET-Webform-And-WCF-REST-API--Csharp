@@ -44,7 +44,7 @@ public partial class ItemMaster : System.Web.UI.Page
 		                        E.WareHouseName,
 		                        E.WareHouseType,
 		                        ISNULL(A.Dimensions,'-') ""Dimensions"",
-		                        ISNULL(CAST(A.[Weight] AS VARCHAR),'-') ""Weight"",
+		                        ISNULL(CAST(A.[Weight] AS VARCHAR) + ' ' + A.WeightUnit,'-') ""Weight"",
 		                        CONVERT(VARCHAR, A.ExpiryDate, 111) ""ExpDate"",
 		                        (CASE 
 			                        WHEN A.Active='Y' THEN 'Yes'
@@ -76,4 +76,19 @@ public partial class ItemMaster : System.Web.UI.Page
         }
 
     }
+
+    protected void ItemInvalidMasterData_DataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            string activeStatus = DataBinder.Eval(e.Row.DataItem, "Active").ToString();
+
+            if (activeStatus == "No")
+            {
+                e.Row.BackColor = System.Drawing.Color.PaleVioletRed;
+                e.Row.ForeColor = System.Drawing.Color.White;
+            }
+        }
+    }
+
 }

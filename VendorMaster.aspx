@@ -68,7 +68,7 @@
         <div>
             <div class="GridViewHdrTxt">Vendor Master Data</div>
             <div class="GridPort">
-                 <asp:GridView runat="server" ID="VendorMasterData" CssClass="GridView" ShowHeaderWhenEmpty="true" CellPadding="10" AutoGenerateColumns="false">
+                 <asp:GridView runat="server" ID="VendorMasterData" CssClass="GridView" ShowHeaderWhenEmpty="true" CellPadding="10" AutoGenerateColumns="false" OnRowDataBound="VendorInvalidMasterData_DataBound">
                      <Columns>
                          <asp:TemplateField HeaderText="Id" >
                              <ItemTemplate>
@@ -134,7 +134,7 @@
                                         runat="server" 
                                         CssClass="EditBtn" 
                                         Text="Edit Vendor" 
-                                        NavigateUrl='<%#Eval("VendorCode", "EditVendor.aspx?VendorCode={0}") %> ' 
+                                        NavigateUrl='<%#Eval("VendorCode", "EditMaster.aspx?Code={0}&Type=Vendor") %> ' 
                                         Target="_blank">
                                     </asp:HyperLink>
                                 </div>

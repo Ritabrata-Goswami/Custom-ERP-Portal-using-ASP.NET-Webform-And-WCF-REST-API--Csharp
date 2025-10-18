@@ -71,6 +71,20 @@ public partial class VendorMaster : System.Web.UI.Page
             Conn.Close();
         }
 
- 
     }
+
+    protected void VendorInvalidMasterData_DataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            string activeStatus = DataBinder.Eval(e.Row.DataItem, "Active").ToString();
+
+            if (activeStatus == "No")
+            {
+                e.Row.BackColor = System.Drawing.Color.PaleVioletRed;
+                e.Row.ForeColor = System.Drawing.Color.White;
+            }
+        }
+    }
+
 }
