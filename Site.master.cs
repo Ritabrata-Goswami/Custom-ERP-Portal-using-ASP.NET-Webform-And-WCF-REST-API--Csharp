@@ -88,6 +88,7 @@ public partial class SiteMaster : MasterPage
             EntryVendor.NavigateUrl = "/EntryVendorMaster.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
             EntryItem.NavigateUrl = "/EntryItemMaster.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
             EntryWarehouse.NavigateUrl = "/EntryWarehouseMaster.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
+            EntryPO.NavigateUrl = "/PurchaseOrder.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
         }
 
     }

@@ -169,6 +169,13 @@
                     <asp:HyperLink runat="server" ID="EntryWarehouse" Text="Enter Warehouse Master" CssClass="dropdown-link"></asp:HyperLink>
                 </div>
             </div>
+
+            <div class="dropdown">
+                <div class="navbar-btn" onclick="toggleDropdown('masterDropdown03')">Purchase Order &#9662;</div>
+                <div class="dropdown-content" id="masterDropdown03">
+                    <asp:HyperLink runat="server" ID="EntryPO" Text="Enter Purchase Order" CssClass="dropdown-link"></asp:HyperLink>
+                </div>
+            </div>
             
         </div>
 

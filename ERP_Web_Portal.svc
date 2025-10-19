@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ERP_Web_Portal_WCF.ERP_Web_Portal" CodeBehind="~/App_Code/ERP_Web_Portal.cs" %>

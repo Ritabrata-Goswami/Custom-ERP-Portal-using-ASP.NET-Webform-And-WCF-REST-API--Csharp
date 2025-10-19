@@ -61,6 +61,15 @@ public partial class PopupMaster : System.Web.UI.Page
 		                                    INNER JOIN WareHouseTypes B ON A.WareHouseType=B.WareHouseTypeCode
                                     WHERE	A.Active='Y'";
                         break;
+                    case "item":
+                        SqlTxt = @"SELECT	A.Id, 
+		                                    A.ItemCode, 
+		                                    A.ItemName,
+		                                    B.ItemTypeName
+                                    FROM	ItemMaster A
+		                                    INNER JOIN ItemTypes B ON A.ItemType = B.ItemTypeCode
+                                    WHERE	A.Active='Y'";
+                        break;
                 }
 
                 //foreach(DataColumn Col in Dt.Columns)
@@ -116,6 +125,9 @@ public partial class PopupMaster : System.Web.UI.Page
                     break;
                 case "warehouse":
                     columnName = "WareHouseCode";
+                    break;
+                case "item":
+                    columnName = "ItemCode";
                     break;
             }
 
