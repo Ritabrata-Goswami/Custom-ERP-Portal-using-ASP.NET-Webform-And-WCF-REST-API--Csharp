@@ -105,6 +105,16 @@
             transition:0.5s;
             background-color:#009875;
         }
+        .delete-row-btn{
+            border:none;
+            border-radius:3px;
+            height:30px;
+            padding:7px 10px;
+            cursor:pointer;
+            background-color:#ea1010;
+            color:antiquewhite;
+            font-size:15px;
+        }
     </style>
     <div>
         <div class="hdr-container">
@@ -191,7 +201,7 @@
                     </div>
                 </div>
                 <div id="Add-Line"></div>
-                <div class="BtnContainer">
+                <div class="BtnContainer" id="BtnContainer">
                     <asp:Button runat="server" ID="AddRowBtn" Text="Add Row +" CssClass="AddRowBtn" />
                     <asp:Button runat="server" ID="SaveData" Text="Save PO Data" CssClass="SaveBtn"  OnClientClick="collectPOData(event)"/>
                 </div>
@@ -246,6 +256,7 @@
         function addLineRow() {
             const container = document.getElementById('Add-Line');
             const template = document.getElementById('Line-Fields-Container');
+            const BtnContainer = document.getElementById('BtnContainer');
 
                             //Clone and reset values
             const newRow = template.cloneNode(true);
@@ -253,7 +264,37 @@
             const inputs = newRow.querySelectorAll('input, textarea');
             inputs.forEach(i => i.value = '');
 
+
+                                        //Create Delete button
+            const delBtn = document.createElement('button');
+            delBtn.type = 'button';
+            delBtn.innerText = 'Delete This Row';
+            delBtn.className = 'delete-row-btn';
+            delBtn.style.marginTop = '22px';
+
+                                        //Attach click event to delete the row
+            delBtn.addEventListener('click', function () {
+                if (container.children.length >= 1) {
+                    newRow.remove();
+                    updateDeleteButtons();
+                }
+            });
+
+            newRow.appendChild(delBtn);
+
             container.appendChild(newRow);
+            updateDeleteButtons();
+        }
+
+        function updateDeleteButtons() {
+            const container = document.getElementById('Add-Line');
+            const rows = container.querySelectorAll('.PO-Dtl-Flds');
+            rows.forEach(row => {
+                const btn = row.querySelector('.delete-row-btn');
+                if (btn) {
+                    btn.style.display = rows.length >= 1 ? 'inline-block' : 'none';
+                }
+            });
         }
 
         document.getElementById('<%= AddRowBtn.ClientID %>').addEventListener('click', function (e) {
@@ -265,11 +306,15 @@
         function collectPOData(e) {
             e.preventDefault();
 
+            const UrlObj = new URLSearchParams(window.location.search);
+            let EmpIdVal = UrlObj.get("empId");
+
             const header = {
                 PONumber: document.getElementById("<%= txtPONum.ClientID %>").value,
                 PODate: document.getElementById("<%= txtPODate.ClientID %>").value,
-                ExpectedDelivery: document.getElementById("<%= txtExpectedDlvDate.ClientID %>").value,
+                ExpectedDlvDate: document.getElementById("<%= txtExpectedDlvDate.ClientID %>").value,
                 PaymentTerms: document.getElementById("<%= txtPymtTrms.ClientID %>").value,
+                EmpId: EmpIdVal,
                 TotalAmount: document.getElementById("<%= txtAmount.ClientID %>").value,
                 Currency: document.getElementById("<%= ddlCurrencyCode.ClientID %>").value,
                 Remarks: document.getElementById("<%= txtRemarks.ClientID %>").value,
@@ -292,44 +337,23 @@
                 header.DtlPO.push(line);
             });
 
-            //console.log(JSON.stringify(header));
+            //console.log(JSON.stringify({ A_Cls_Po:header }));
 
-            const jsonObj = {
-                "PONumber": "PO123",
-                "PODate": "2025-10-15",
-                "ExpectedDelivery": "2025-10-30",
-                "PaymentTerms": "20 days",
-                "TotalAmount": "1",
-                "Currency": "1",
-                "Remarks": "rtytry",
-                "EmpId": "E002", 
-                "RowId": 2,
-                "DtlPO": [
-                    {
-                        "ItemCode": "ITM001",
-                        "VendorCode": "V004",
-                        "WarehouseCode": "WH004",
-                        "Quantity": "1",
-                        "Price": "1",
-                        "Discount": "1",
-                        "Tax": "1",
-                        "RemarksDtl": "line1"
-                    }
-                ]
-            };
-
-            console.log(jsonObj);
-
-            fetch("PurchaseOrder.aspx/savePO", {
+                                            //Sending JSON to WCF endpoint.
+            fetch("http://localhost:49808/ERP_Web_Portal.svc/PostPO", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(jsonObj)
+                body: JSON.stringify({ A_Cls_Po: header })
             }).then((res) => res.json()).then((res) => {
-                console.log(res);
-                alert("PO Posted Successfully!");
-            }).catch((err) => { console.log(err.message); alert(err.message); })
+                //console.log(res);
+
+                alert(res.PostPOResult.ResponseMsg);
+            }).catch((err) => {
+                console.log(err.message);
+                alert(err.message);
+            })
         }
     </script>
 </asp:Content>

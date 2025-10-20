@@ -23,19 +23,33 @@ namespace Cls_ERP_Web_Portal
     }
 
 
+                    //PO Classes
     [Serializable]
+    [DataContract]
+    public class Cls_ShowPurchaseOrder
+    {
+        [DataMember]
+        public int StatusCode { get; set; }
+        [DataMember]
+        public string ResponseMsg { get; set; }
+        [DataMember]
+        public Cls_PurchaseOrderHdr PoHdr { get; set; }
+    }
+
+    [Serializable]
+    [DataContract]
     public class Cls_PurchaseOrderHdr
     {
         [DataMember]
         public string PONumber { get; set; }
         [DataMember]
-        public DateTime PODate { get; set; }
+        public string PODate { get; set; }
         [DataMember]
-        public DateTime ExpectedDlvDate { get; set; }
+        public string ExpectedDlvDate { get; set; }
         [DataMember]
         public string PaymentTerms { get; set; }
         [DataMember]
-        public decimal TotalAmount { get; set; }
+        public string TotalAmount { get; set; }
         [DataMember]
         public string Currency { get; set; }
         [DataMember]
@@ -43,12 +57,23 @@ namespace Cls_ERP_Web_Portal
         [DataMember]
         public string EmpId { get; set; }
         [DataMember]
+        public string EmpName { get; set; }
+        [DataMember]
         public string RowId { get; set; }
+        [DataMember]
+        public string POStatus { get; set; }
+        [DataMember]
+        public string POCreatedDate { get; set; }
+        [DataMember]
+        public string ApprovedBy { get; set; }
+        [DataMember]
+        public string ApprovedDate { get; set; }
         [DataMember]
         public List<Cls_PurchaseOrderDtl> DtlPO { get; set; }
     }
 
     [Serializable]
+    [DataContract]
     public class Cls_PurchaseOrderDtl
     {
         [DataMember]
@@ -58,13 +83,15 @@ namespace Cls_ERP_Web_Portal
         [DataMember]
         public string WarehouseCode { get; set; }
         [DataMember]
-        public decimal Quantity { get; set; }
+        public string Quantity { get; set; }
         [DataMember]
-        public decimal Price { get; set; }
+        public string Price { get; set; }
         [DataMember]
-        public decimal Discount { get; set; }
+        public string Discount { get; set; }
         [DataMember]
-        public decimal Tax { get; set; }
+        public string Tax { get; set; }
+        [DataMember]
+        public decimal LineTotal { get; set; }
         [DataMember]
         public string RemarksDtl { get; set; }
     }

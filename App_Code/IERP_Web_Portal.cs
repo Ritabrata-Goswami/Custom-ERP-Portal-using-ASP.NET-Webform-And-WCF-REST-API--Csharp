@@ -15,13 +15,30 @@ namespace ERP_Web_Portal_WCF
     {
         [OperationContract]
         [WebInvoke(
-            UriTemplate = "/DoWork",
             Method = "GET",
+            UriTemplate = "/DoWork",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json)]
         Cls_Response DoWork();
+
+        [OperationContract]
+        [WebInvoke(
+            Method = "POST",
+            UriTemplate = "/PostPO",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, 
+            BodyStyle =WebMessageBodyStyle.Wrapped)]
+        Cls_Response PostPO(Cls_PurchaseOrderHdr A_Cls_Po);
+
+        [OperationContract]
+        [WebInvoke(
+            Method = "GET",
+            UriTemplate = "/GetPO?PoNum={PoNum}",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
+        Cls_ShowPurchaseOrder GetPO(string PoNum);
+
+
     }
-
-
 }
 

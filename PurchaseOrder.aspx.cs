@@ -61,33 +61,4 @@ public partial class PurchaseOrder : System.Web.UI.Page
     }
 
 
-    [WebMethod]
-    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-    public static string savePO(Cls_PurchaseOrderHdr jsonObj)
-    {
-                //Convert incoming object to JSON string
-        string json = jsonObj.ToString();
-
-                //Deserialize to C# class
-        Cls_PurchaseOrderHdr PO = JsonConvert.DeserializeObject<Cls_PurchaseOrderHdr>(json);
-
-                //Now you can access header and line details
-        string PONumber = PO.PONumber.Trim();
-        DateTime PODate = Convert.ToDateTime(PO.PODate);
-        DateTime ExpectDlvDate = Convert.ToDateTime(PO.ExpectedDlvDate);
-        string PaymentTerms = PO.PaymentTerms.Trim();
-        string CreatedBy = PO.EmpId.Trim();
-        DateTime CreatedTime = DateTime.Now;
-        decimal TotalAmount = Convert.ToDecimal(PO.TotalAmount);
-        int CurrencyCode = Convert.ToInt32(PO.Currency);
-        string Remarks = PO.Remarks.Trim();
-
-        foreach (var line in PO.DtlPO)
-        {
-            
-        }
-
-        return "Success";
-    }
-
 }
