@@ -90,6 +90,8 @@ public partial class SiteMaster : MasterPage
             EntryWarehouse.NavigateUrl = "/EntryWarehouseMaster.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
             EntryPO.NavigateUrl = "/PurchaseOrder.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
             SearchPO.NavigateUrl= "/ViewPO.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
+            EntryGrpo.NavigateUrl= "/GoodsReceiptPO.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
+            DisplayGrpo.NavigateUrl= "/ViewGRPO.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
         }
 
     }

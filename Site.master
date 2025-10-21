@@ -177,6 +177,14 @@
                     <asp:HyperLink runat="server" ID="SearchPO" Text="View Purchase Order" CssClass="dropdown-link"></asp:HyperLink>
                 </div>
             </div>
+
+            <div class="dropdown">
+                <div class="navbar-btn" onclick="toggleDropdown('masterDropdown04')">Goods Receipt PO &#9662;</div>
+                <div class="dropdown-content" id="masterDropdown04">
+                    <asp:HyperLink runat="server" ID="EntryGrpo" Text="Goods Receipt PO" CssClass="dropdown-link"></asp:HyperLink>
+                    <asp:HyperLink runat="server" ID="DisplayGrpo" Text="View GRPO" CssClass="dropdown-link"></asp:HyperLink>
+                </div>
+            </div>
             
         </div>
 
