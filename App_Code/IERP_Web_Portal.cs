@@ -38,6 +38,24 @@ namespace ERP_Web_Portal_WCF
             ResponseFormat = WebMessageFormat.Json)]
         Cls_ShowPurchaseOrder GetPO(string PoNum);
 
+        [OperationContract]
+        [WebInvoke(
+            Method = "POST",
+            UriTemplate = "/PostGRPO",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        Cls_Response PostGRPO(Cls_GRPO_Hdr A_Cls_Grpo);
+
+        [OperationContract]
+        [WebInvoke(
+            Method = "GET",
+            UriTemplate = "/GetGRPO?GrpoNum={GrpoNum}",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
+        Cls_ShowGRPO GetGRPO(string GrpoNum);
+
+
 
     }
 }

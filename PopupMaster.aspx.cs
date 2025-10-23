@@ -70,6 +70,45 @@ public partial class PopupMaster : System.Web.UI.Page
 		                                    INNER JOIN ItemTypes B ON A.ItemType = B.ItemTypeCode
                                     WHERE	A.Active='Y'";
                         break;
+                    case "po":
+                        SqlTxt = @"SELECT	A.Id,
+		                                    A.PONum,
+		                                    A.PO_Status ""PO Status"",
+		                                    CONVERT(VARCHAR, A.Created_Date, 23) ""Created Date""
+                                    FROM	PurchaseOrder_Hdr A
+                                    WHERE	A.PO_Status LIKE '%approved%'";
+                        break;
+                    case "employee":
+                        SqlTxt = @"SELECT	A.Id,
+		                                    A.EmpId,
+		                                    UPPER(SUBSTRING(ISNULL(A.FName,''),1,1)) + LOWER(SUBSTRING(ISNULL(A.FName,''),2,LEN(A.FName)-1)) 
+                                            + ' ' + UPPER(SUBSTRING(ISNULL(A.LName,''),1,1)) + LOWER(SUBSTRING(ISNULL(A.LName,''),2,LEN(A.LName)-1)) ""EmployeeName"",
+		                                    CONVERT(VARCHAR, A.JoinDate, 23) ""Join Date""
+                                    FROM	UserLogin A
+                                    WHERE	A.ActiveUser='Y'";
+                        break;
+                    case "currency":
+                        SqlTxt = @"SELECT	A.Id,
+		                                    A.CurrencyCode,
+		                                    UPPER(SUBSTRING(ISNULL(A.CurrencyName,''),1,1)) + 
+		                                    LOWER(SUBSTRING(ISNULL(A.CurrencyName,''),2,LEN(A.CurrencyName)-1)) ""CurrencyName""
+                                    FROM	CurrencyTypes A";
+                        break;
+                    case "grpo":
+                        SqlTxt = @"SELECT	A.Id, 
+		                                    A.GRPO_No ""GRPONo"", 
+		                                    A.PO_No ""PO No"", 
+		                                    B.DocStatusName ""Status"" 
+                                    FROM	GRPO_Hdr A
+		                                    INNER JOIN DocStatusEnum B ON B.DocStatusCode=A.DocStatus";
+                        break;
+                    case "batch":
+                        SqlTxt = @"SELECT	A.Id, 
+		                                    A.Batch_No,
+		                                    A.GRPO_Id,
+		                                    A.PO_Line_Id ""Line Id""
+                                    FROM	GRPO_Dtls A";
+                        break;
                 }
 
                 //foreach(DataColumn Col in Dt.Columns)
@@ -128,6 +167,21 @@ public partial class PopupMaster : System.Web.UI.Page
                     break;
                 case "item":
                     columnName = "ItemCode";
+                    break;
+                case "po":
+                    columnName = "PONum";
+                    break;
+                case "employee":
+                    columnName = "EmpId";
+                    break;
+                case "currency":
+                    columnName = "CurrencyCode";
+                    break;
+                case "grpo":
+                    columnName = "GRPONo";
+                    break;
+                case "batch":
+                    columnName = "Batch_No";
                     break;
             }
 

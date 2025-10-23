@@ -97,5 +97,82 @@ namespace Cls_ERP_Web_Portal
     }
 
 
+                    //GRPO Classes
+    [DataContract]
+    public class Cls_ShowGRPO
+    {
+        [DataMember]
+        public int StatusCode { get; set; }
+        [DataMember]
+        public string ResponseMsg { get; set; }
+        [DataMember]
+        public Cls_GRPO_Hdr GrpoHdr { get; set; }
+    }
+
+    [DataContract]
+    public class Cls_GRPO_Hdr
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public string GRPO_No { get; set; }
+        [DataMember]
+        public string PO_No { get; set; }
+        [DataMember]
+        public string VendorCode { get; set; }
+        [DataMember]
+        public string WarehouseCode { get; set; }
+        [DataMember]
+        public string WarehouseName { get; set; }
+        [DataMember]
+        public string ReceivedDt { get; set; }
+        [DataMember]
+        public string ReceivedBy { get; set; }
+        [DataMember]
+        public string EmpName { get; set; }
+        [DataMember]
+        public string DocStatus { get; set; }
+        [DataMember]
+        public string DocDate { get; set; }
+        [DataMember]
+        public string CreatedBy { get; set; }
+        [DataMember]
+        public string Remarks { get; set; }
+        [DataMember]
+        public List<Cls_GRPO_Dtls> GrpoDtls { get; set; }
+    }
+
+    [DataContract]
+    public class Cls_GRPO_Dtls
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public string GRPO_Id { get; set; }
+        [DataMember]
+        public string LineId { get; set; }
+        [DataMember]
+        public string ItemCode { get; set; }
+        [DataMember]
+        public string OrderQuantity { get; set; }
+        [DataMember]
+        public string ReceivedQty { get; set; }
+        [DataMember]
+        public string UnitPrice { get; set; }
+        [DataMember]
+        public string CurrencyCode { get; set; }
+        [DataMember]
+        public string CurrencyName { get; set; }
+        [DataMember]
+        public decimal TotalAmount { get; set; }
+        [DataMember]
+        public string BatchNum { get; set; }
+        [DataMember]
+        public string ExpireDt { get; set; }
+        [DataMember]
+        public string Remarks { get; set; }
+    }
+
+
 
 }

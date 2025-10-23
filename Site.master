@@ -185,6 +185,14 @@
                     <asp:HyperLink runat="server" ID="DisplayGrpo" Text="View GRPO" CssClass="dropdown-link"></asp:HyperLink>
                 </div>
             </div>
+
+            <div class="dropdown">
+                <div class="navbar-btn" onclick="toggleDropdown('masterDropdown05')">Inventory &#9662;</div>
+                <div class="dropdown-content" id="masterDropdown05">
+                    <asp:HyperLink runat="server" ID="PostInv" Text="Post Inventory" CssClass="dropdown-link"></asp:HyperLink>
+                    <asp:HyperLink runat="server" ID="GetInv" Text="View Inventory" CssClass="dropdown-link"></asp:HyperLink>
+                </div>
+            </div>
             
         </div>
 
