@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\viewinventory.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:viewinventory.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\itemmaster.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:itemmaster.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\app_code\\ierp_web_portal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:app_code\\ierp_web_portal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|d:\\working\\c#\\projects\\erp_web_portal\\goodsreceiptpo.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:goodsreceiptpo.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\app_code\\erp_web_portal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:app_code\\erp_web_portal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|solutionrelative:site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{56929784-86A6-44D8-8611-02F3222000C4}|D:\\Working\\C#\\Projects\\ERP_Web_Portal|D:\\Working\\C#\\Projects\\ERP_Web_Portal\\app_code\\cls_erp_portal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,59 +42,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ItemMaster.aspx.cs",
-              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\ItemMaster.aspx.cs",
-              "RelativeDocumentMoniker": "ItemMaster.aspx.cs",
-              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\ItemMaster.aspx.cs",
-              "RelativeToolTip": "ItemMaster.aspx.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAYwFYAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T19:39:42.477Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ViewInventory.aspx",
-              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\ViewInventory.aspx",
-              "RelativeDocumentMoniker": "ViewInventory.aspx",
-              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\ViewInventory.aspx",
-              "RelativeToolTip": "ViewInventory.aspx",
+              "Title": "GoodsReceiptPO.aspx",
+              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\GoodsReceiptPO.aspx",
+              "RelativeDocumentMoniker": "GoodsReceiptPO.aspx",
+              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\GoodsReceiptPO.aspx",
+              "RelativeToolTip": "GoodsReceiptPO.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-23T19:37:51.598Z",
+              "WhenOpened": "2025-10-24T04:44:41.513Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "ERP_Web_Portal.cs",
               "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\ERP_Web_Portal.cs",
               "RelativeDocumentMoniker": "App_Code\\ERP_Web_Portal.cs",
               "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\ERP_Web_Portal.cs",
               "RelativeToolTip": "App_Code\\ERP_Web_Portal.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABwAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-19T21:02:53.282Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Cls_ERP_Portal.cs",
-              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\Cls_ERP_Portal.cs",
-              "RelativeDocumentMoniker": "App_Code\\Cls_ERP_Portal.cs",
-              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\Cls_ERP_Portal.cs",
-              "RelativeToolTip": "App_Code\\Cls_ERP_Portal.cs",
-              "ViewState": "AQIAAHgAAAAAAAAAAAAIwI8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T17:11:17.778Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\Web.config",
               "RelativeDocumentMoniker": "Web.config",
@@ -123,8 +89,7 @@
               "RelativeToolTip": "Site.master.cs",
               "ViewState": "AQIAAE0AAAAAAAAAAAAgwF8AAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T13:25:49.861Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-11T13:25:49.861Z"
             },
             {
               "$type": "Document",
@@ -142,15 +107,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IERP_Web_Portal.cs",
-              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\IERP_Web_Portal.cs",
-              "RelativeDocumentMoniker": "App_Code\\IERP_Web_Portal.cs",
-              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\IERP_Web_Portal.cs",
-              "RelativeToolTip": "App_Code\\IERP_Web_Portal.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwCcAAAAAAAAA",
+              "Title": "Cls_ERP_Portal.cs",
+              "DocumentMoniker": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\Cls_ERP_Portal.cs",
+              "RelativeDocumentMoniker": "App_Code\\Cls_ERP_Portal.cs",
+              "ToolTip": "D:\\Working\\C#\\Projects\\ERP_Web_Portal\\App_Code\\Cls_ERP_Portal.cs",
+              "RelativeToolTip": "App_Code\\Cls_ERP_Portal.cs",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAIwI8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T21:01:25.244Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T17:11:17.778Z"
             }
           ]
         }
