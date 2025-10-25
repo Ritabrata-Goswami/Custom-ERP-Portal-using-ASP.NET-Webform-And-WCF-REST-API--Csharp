@@ -80,7 +80,7 @@ namespace ERP_Web_Portal_WCF
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Cls_Response UpdateAPInv(Cls_UpdateAPInv sendObj);
+        Cls_Response UpdateAPInv(Cls_UpdateAPInv InvUpdate);
 
 
 

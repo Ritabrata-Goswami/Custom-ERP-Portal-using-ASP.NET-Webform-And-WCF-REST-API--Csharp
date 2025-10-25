@@ -9,6 +9,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web;
+using System.Web.Configuration;
 using Cls_ERP_Web_Portal;
 
 
@@ -731,6 +732,8 @@ namespace ERP_Web_Portal_WCF
 		                                A.NetAmount,
 		                                CONVERT(VARCHAR, A.CreatedOn,23) ""CreatedOn"",
 		                                A.CreatedBy,
+                                        A.ModifiedBy,
+		                                A.ModifiedOn,
 		                                UPPER(SUBSTRING(ISNULL(D.FName,''),1,1)) + LOWER(SUBSTRING(ISNULL(D.FName,''),2,LEN(D.FName)-1)) 
                                 + ' ' + UPPER(SUBSTRING(ISNULL(D.LName,''),1,1)) + LOWER(SUBSTRING(ISNULL(D.LName,''),2,LEN(D.LName)-1)) ""CreatedByName"",
 		                                C.DocStatusName,
@@ -749,6 +752,7 @@ namespace ERP_Web_Portal_WCF
                     {
                         if (Reader.Read())
                         {
+                            AP_Hdr.Id = Convert.ToInt32(Reader["Id"].ToString());
                             AP_Hdr.InvNo = Reader["InvNo"].ToString();
                             AP_Hdr.Vendor_Id = Reader["Vendor_Id"].ToString();
                             AP_Hdr.PONo = Reader["PONo"].ToString();
@@ -761,6 +765,8 @@ namespace ERP_Web_Portal_WCF
                             AP_Hdr.CreatedOn = Reader["CreatedOn"].ToString();
                             AP_Hdr.CreatedBy = Reader["CreatedBy"].ToString();
                             AP_Hdr.CreatedByName = Reader["CreatedByName"].ToString();
+                            AP_Hdr.ModifiedBy = Reader["ModifiedBy"].ToString();
+                            AP_Hdr.ModifiedOn = Reader["ModifiedOn"].ToString();
                             AP_Hdr.Status = Reader["DocStatusName"].ToString();
                             AP_Hdr.Remarks = Reader["Remarks"].ToString();
 
@@ -843,12 +849,57 @@ namespace ERP_Web_Portal_WCF
             return Res;
         }
 
-        public Cls_Response UpdateAPInv(Cls_UpdateAPInv sendObj)
+        public Cls_Response UpdateAPInv(Cls_UpdateAPInv InvUpdate)
         {
-            Cls_UpdateAPInv UpdateAp = new Cls_UpdateAPInv();
+            Cls_UpdateAPInv UpdateApInv = new Cls_UpdateAPInv();
             Cls_Response Res = new Cls_Response();
+            SqlConnection Conn = null;
+
+            if(InvUpdate.RowId==0 || string.IsNullOrEmpty(InvUpdate.InvNo) || string.IsNullOrEmpty(InvUpdate.DocStatus))
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.NotFound;
+                Res.StatusCode= Convert.ToInt32(HttpStatusCode.NotFound);
+                Res.ResponseMsg = "All Parameters Not Found!";
+            }
+            else
+            {
+                Conn = new SqlConnection(StrConn);
+                Conn.Open();
+
+                string DocStatus = InvUpdate.DocStatus.Trim();
+                int RowId = InvUpdate.RowId;
+                string InvNo = InvUpdate.InvNo.Trim();
+                string UpdatedBy = InvUpdate.UpdateBy.Trim();
+
+                string SqlTxt = @"UPDATE ApInvoice_Hdr SET [Status]=@Status,ModifiedBy=@UpdateBy,ModifiedOn=@UpdateTime 
+                                    WHERE Id=@RowId AND InvNo=@InvNo";
+                SqlCommand Cmd = new SqlCommand(SqlTxt, Conn);
+                Cmd.Parameters.AddWithValue("@Status", DocStatus);
+                Cmd.Parameters.AddWithValue("@UpdateBy", UpdatedBy);
+                Cmd.Parameters.AddWithValue("@UpdateTime",DateTime.Now);
+                Cmd.Parameters.AddWithValue("@RowId", RowId);
+                Cmd.Parameters.AddWithValue("@InvNo", InvNo);
+
+                int RowUpdated = Cmd.ExecuteNonQuery();
+                if (RowUpdated > 0) 
+                {
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.OK;
+                    Res.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+                    Res.ResponseMsg = $"Invoice No {InvNo} Of Row Id {RowId} Updated Successfully.";
+                }
+                else
+                {
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.InternalServerError;
+                    Res.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+                    Res.ResponseMsg = $"Invoice Updated Failed!";
+                }
+
+                Conn.Close();
+            }
 
             return Res;
         }
+
+
     }
 }

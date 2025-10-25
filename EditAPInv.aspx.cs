@@ -13,6 +13,7 @@ public partial class EditAPInv : System.Web.UI.Page
     protected string StrConn = ConfigurationManager.ConnectionStrings["ERP_Db_Conn_Str"].ConnectionString;
     protected string APInvNo = "";
     protected string APInvRowId = "";
+    protected string DocStatusVal = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -29,6 +30,7 @@ public partial class EditAPInv : System.Web.UI.Page
             }
 
             DocStatusBinding();
+            InvStatusValBinding();
         }
     }
 
@@ -65,6 +67,38 @@ public partial class EditAPInv : System.Web.UI.Page
         }
     }
 
+    public void InvStatusValBinding()
+    {
+        SqlConnection Conn = null;
+        DataTable Dt = null;
+        string RowId = Request.QueryString["Id"].Trim();
+        string InvNo = Request.QueryString["InvNo"].Trim();
+
+        try
+        {
+            Conn = new SqlConnection(StrConn);
+            Conn.Open();
+
+            string SqlTxt = @"SELECT * FROM ApInvoice_Hdr WHERE Id='" + RowId + "'AND InvNo='" + InvNo + "'";
+            SqlCommand Cmd = new SqlCommand(SqlTxt, Conn);
+            SqlDataReader Reader =Cmd.ExecuteReader();
+
+            if (Reader.Read())
+            {
+                DocStatusVal = Reader["Status"].ToString();
+            }
+            ddlStatus.SelectedValue = (DocStatusVal == "C") ? "C" : "O";
+        }
+        catch (Exception ex)
+        {
+            string ErrMsg = ex.Message.Replace("'", "\\'");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "DocStatusBindingError", $"alert('Error due to: {ErrMsg}')", true);
+        }
+        finally
+        {
+            Conn.Close();
+        }
+    }
 
 
 }

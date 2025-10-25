@@ -257,13 +257,16 @@ namespace Cls_ERP_Web_Portal
     }
 
 
-    //Update A/P Inv Class.
+                    //Update A/P Inv Class.
+    [DataContract]
     public class Cls_UpdateAPInv
     {
         [DataMember]
         public int RowId { get; set; }
         [DataMember]
         public string InvNo { get; set; }
+        [DataMember]
+        public string UpdateBy { get; set; }
         [DataMember]
         public string DocStatus { get; set; }
     }

@@ -52,7 +52,7 @@
                 border:none;
                 background-color:#16ad61;
                 color:whitesmoke;
-                padding:8px 8px;
+                padding:8px 13px;
                 border-radius:3px;
                 font-weight:bold;
                 font-size:14px;
@@ -82,6 +82,9 @@
         <script type="text/javascript">
             window.document.getElementById("search-AP-Inv").addEventListener("click", (event) => {
                 event.preventDefault();
+
+                const urlObj = new URLSearchParams(window.location.search);
+                let empId = urlObj.get("empId");
 
                 let getAPInvNum = document.getElementById("enterAPInvoice").value;
                 getAPInvNum = getAPInvNum.trim();
@@ -123,7 +126,11 @@
                                 <div style="margin-bottom:3px;"><strong>Modified On: </strong> ${h.ModifiedOn}</div>
                                 <div style="margin-bottom:3px;"><strong>Vendor Code: </strong> ${h.Vendor_Id}</div>
 
-                                <div style="margin-bottom:3px;"><strong>Remarks: </strong> ${h.Remarks}</div><hr/>`;
+                                <div style="margin-bottom:3px;"><strong>Remarks: </strong> ${h.Remarks}</div>
+                                <div style="margin-top:13px;">
+                                    <a href="/EditAPInv.aspx?Id=${h.Id}&InvNo=${h.InvNo}&empId=${empId}" id="Edit-Btn" target="_blank"><button type="button" class="EditBtn">Edit A/P Invoice</button></a>
+                                </div>
+                                <hr/>`;
 
 
                             let tableHTML = `<h2>Account Purchase Invoices Details</h2>
@@ -138,7 +145,6 @@
                                                             <th>Tax Code</th>
                                                             <th>Unit Price</th>
                                                             <th>Remarks</th>
-                                                            <th>Open Edit</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>`;
@@ -152,7 +158,6 @@
                                         <td>${item.TaxCode}</td>
                                         <td>${item.UnitPrice}</td>
                                         <td>${item.RemarksDtl}</td>
-                                        <td><a href="/EditAPInv.aspx?Id=${item.Id}&InvNo=${item.InvNo}" id="Line-${item.Id}" target="_blank"><button type="button" class="EditBtn">Edit</button></a></td>
                                     </tr>`;});
 
                             tableHTML +=`</tbody></table>`;

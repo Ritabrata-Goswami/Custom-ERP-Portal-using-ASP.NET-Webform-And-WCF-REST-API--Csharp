@@ -117,6 +117,9 @@
         function UpdateAPInvoice(e) {
             e.preventDefault();
 
+            const urlObj = new URLSearchParams(window.location.search);
+            let empId = urlObj.get("empId");
+
             let DocStatusVal = document.getElementById("<%=ddlStatus.ClientID%>").value;
             if (DocStatusVal === "") {
                 return false;
@@ -124,13 +127,14 @@
 
             let sendObj = {
                 RowId:<%= APInvRowId%>,
-                InvNo:'<%= APInvNo%>',
+                InvNo: '<%= APInvNo%>',
+                UpdateBy: empId,
                 DocStatus: DocStatusVal
             };
 
             //console.log({ InvUpdate: sendObj });
 
-            fetch(``, {
+            fetch(`http://localhost:49808/ERP_Web_Portal.svc/UpdateAPInv`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -138,7 +142,7 @@
                 body: JSON.stringify({ InvUpdate: sendObj })
             })
                 .then((res) => res.json())
-                .then((res) => console.log(res))
+                .then((res) => alert(res.UpdateAPInvResult.ResponseMsg))
                 .catch((err) => {
                     console.log(err.message);
                     alert("Error due to:- " + err.message);
