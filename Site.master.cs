@@ -94,6 +94,8 @@ public partial class SiteMaster : MasterPage
             DisplayGrpo.NavigateUrl= "/ViewGRPO.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
             PostInv.NavigateUrl = "/PostInventory.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
             GetInv.NavigateUrl = "/ViewInventory.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
+            PostInvoice.NavigateUrl= "/PostAPInvoice.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
+            GetInvoice.NavigateUrl= "/ViewAPInvoice.aspx?empId=" + Session["EmpId"] + "&rowId=" + Session["RowId"];
         }
 
     }

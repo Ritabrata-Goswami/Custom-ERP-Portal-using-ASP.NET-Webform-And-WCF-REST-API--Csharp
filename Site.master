@@ -193,6 +193,14 @@
                     <asp:HyperLink runat="server" ID="GetInv" Text="View Inventory" CssClass="dropdown-link"></asp:HyperLink>
                 </div>
             </div>
+
+            <div class="dropdown">
+                <div class="navbar-btn" onclick="toggleDropdown('masterDropdown06')">A/P Invoice &#9662;</div>
+                <div class="dropdown-content" id="masterDropdown06">
+                    <asp:HyperLink runat="server" ID="PostInvoice" Text="Post Invoice" CssClass="dropdown-link"></asp:HyperLink>
+                    <asp:HyperLink runat="server" ID="GetInvoice" Text="View Invoice" CssClass="dropdown-link"></asp:HyperLink>
+                </div>
+            </div>
             
         </div>
 

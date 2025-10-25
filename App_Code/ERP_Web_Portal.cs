@@ -572,7 +572,283 @@ namespace ERP_Web_Portal_WCF
             return Res;
         }
 
+        public Cls_Response PostApInv(Cls_AccountPurchaseInvHdr A_Cls_ApInv)
+        {
+            SqlConnection Conn = new SqlConnection(StrConn);
+            Cls_Response Res = new Cls_Response();
+            SqlCommand Cmd = null;
+            string SqlTxt = "";
+
+            try
+            {
+                Conn.Open();
+
+                if (A_Cls_ApInv != null)
+                {
+                    string InvNo = A_Cls_ApInv.InvNo.Trim();
+                    string Vendor_Id = A_Cls_ApInv.Vendor_Id.Trim();
+                    string PONo = A_Cls_ApInv.PONo.Trim();
+                    string GRPONo = A_Cls_ApInv.GRPONo.Trim();
+                    DateTime DocDate = Convert.ToDateTime(A_Cls_ApInv.DocDate.Trim());
+                    DateTime PostingDate = Convert.ToDateTime(A_Cls_ApInv.PostingDate.Trim());
+                    DateTime DueDate =Convert.ToDateTime(A_Cls_ApInv.DueDate.Trim());
+                    string Currency = A_Cls_ApInv.Currency.Trim();
+                    decimal DocTotal = A_Cls_ApInv.DocTotal;
+                    decimal TaxAmount = A_Cls_ApInv.TaxAmount;
+                    decimal Discount = A_Cls_ApInv.Discount;
+                    string Remarks = A_Cls_ApInv.Remarks.Trim();
+                    string Status = A_Cls_ApInv.Status.Trim();
+                    string CreatedBy = A_Cls_ApInv.CreatedBy.Trim();
+                    
+                    DateTime CreatedDate = DateTime.Now;
 
 
+                    SqlTxt = @"INSERT INTO ApInvoice_Hdr (InvNo,Vendor_Id,PONo,GRPONo,DocDate,PostingDate,DueDate,Currency,DocTotal,TaxAmount,
+                                Discount,Remarks,[Status],CreatedOn,CreatedBy)VALUES(@InvNo,@VendId,@PoNo,@GrpoNo,@DocDate,@PostDate,@DueDate,
+                                @Currency,@DocTotal,@TaxAmt,@Discount,@Remarks,@Status,@CreatedOn,@CreatedBy)";
+
+                    Cmd = new SqlCommand(SqlTxt, Conn);
+                    Cmd.Parameters.AddWithValue("@InvNo", InvNo);
+                    Cmd.Parameters.AddWithValue("@VendId", Vendor_Id);
+                    Cmd.Parameters.AddWithValue("@PoNo", PONo);
+                    Cmd.Parameters.AddWithValue("@GrpoNo", GRPONo);
+                    Cmd.Parameters.AddWithValue("@DocDate", DocDate);
+                    Cmd.Parameters.AddWithValue("@PostDate", PostingDate);
+                    Cmd.Parameters.AddWithValue("@DueDate", DueDate);
+                    Cmd.Parameters.AddWithValue("@Currency", Currency);
+                    Cmd.Parameters.AddWithValue("@DocTotal", DocTotal);
+                    Cmd.Parameters.AddWithValue("@TaxAmt", TaxAmount);
+                    Cmd.Parameters.AddWithValue("@Discount", Discount);
+                    Cmd.Parameters.AddWithValue("@Remarks", Remarks);
+                    Cmd.Parameters.AddWithValue("@Status", Status);
+                    Cmd.Parameters.AddWithValue("@CreatedOn", CreatedDate);
+                    Cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                    int RowSaved = Cmd.ExecuteNonQuery();
+
+                    if (RowSaved > 0)
+                    {
+                        if (A_Cls_ApInv.ApInvDtls != null)
+                        {
+                            foreach (Cls_AccountPurchaseInvDtls Cls_Ap_Dtl in A_Cls_ApInv.ApInvDtls)
+                            {
+                                string ItemCode = Cls_Ap_Dtl.ItemCode.Trim();
+                                decimal Quantity = Cls_Ap_Dtl.Quantity;
+                                decimal UnitPrice = Cls_Ap_Dtl.Quantity;
+                                string TaxCode = Cls_Ap_Dtl.TaxCode.Trim();
+                                string RemarksDtl = Cls_Ap_Dtl.RemarksDtl.Trim();
+
+
+                                SqlTxt = @"BEGIN TRANSACTION;";
+                                SqlTxt += @"INSERT INTO ApInvoice_Dtl(InvNo,ItemCode,Quantity,UnitPrice,TaxCode,RemarksDtl)
+                                            VALUES(@InvNo,@ItemCode,@Quantity,@UnitPrice,@TaxCode,@RemarksDtl);";
+                                SqlTxt += @"COMMIT TRANSACTION;";
+
+                                Cmd = new SqlCommand(SqlTxt, Conn);
+                                Cmd.Parameters.AddWithValue("@InvNo", InvNo);
+                                Cmd.Parameters.AddWithValue("@ItemCode", ItemCode);
+                                Cmd.Parameters.AddWithValue("@Quantity", Quantity);
+                                Cmd.Parameters.AddWithValue("@UnitPrice", UnitPrice);
+                                Cmd.Parameters.AddWithValue("@TaxCode", TaxCode);
+                                Cmd.Parameters.AddWithValue("@RemarksDtl", RemarksDtl);
+
+                                int DtlRow = Cmd.ExecuteNonQuery();
+                                if (DtlRow > 0)
+                                {
+                                    WebOperationContext.Current.OutgoingResponse.StatusDescription = HttpStatusCode.OK.ToString();
+                                    WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.OK;
+                                    Res.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+                                    Res.ResponseMsg = "AP Inv " + InvNo + " Saved Successfully!";
+                                }
+                            }
+                        }
+                        else
+                        {
+                            throw new NullReferenceException("Detail part of AP Invoice is missing! DB Transaction failed!");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Header table data not saved! Please try again.");
+                    }
+                }
+                else
+                {
+                    throw new NullReferenceException("Input JSON object is missing, probably of key mismatch.");
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                //HttpContext.Current.Response.StatusCode = Convert.ToInt32(HttpStatusCode.NotAcceptable);
+                //HttpContext.Current.Response.StatusDescription = HttpStatusCode.NotAcceptable.ToString();
+                WebOperationContext.Current.OutgoingResponse.StatusDescription = HttpStatusCode.NotAcceptable.ToString();
+                WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.NotAcceptable;
+                Res.ResponseMsg = ex.Message;
+                Res.StatusCode = Convert.ToInt32(HttpStatusCode.NotAcceptable);
+            }
+            catch (Exception ex)
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusDescription = HttpStatusCode.InternalServerError.ToString();
+                WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.InternalServerError;
+                Res.ResponseMsg = ex.Message;
+                Res.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+            }
+            finally
+            {
+                Conn.Close();
+            }
+
+            return Res;
+        }
+
+        public Cls_ShowAccountPurchaseInv GetAPInvoice(string InvNum)
+        {
+            SqlConnection Conn = new SqlConnection(StrConn);
+            Cls_ShowAccountPurchaseInv Res = new Cls_ShowAccountPurchaseInv();
+            Cls_AccountPurchaseInvHdr AP_Hdr = new Cls_AccountPurchaseInvHdr();
+            Cls_AccountPurchaseInvDtls AP_Dtl = null;
+            List<Cls_AccountPurchaseInvDtls> DtlList = new List<Cls_AccountPurchaseInvDtls>();
+            SqlCommand Cmd = null;
+            SqlDataReader Reader = null;
+            string SqlTxt = "";
+
+            try
+            {
+                Conn.Open();
+                InvNum = InvNum.Trim();
+
+                if (!string.IsNullOrEmpty(InvNum))
+                {
+                    SqlTxt = @"SELECT	A.Id, 
+		                                A.InvNo,
+		                                A.Vendor_Id,
+		                                A.PONo,
+		                                A.GRPONo,
+		                                A.DocDate,
+		                                A.DueDate,
+		                                A.PostingDate,
+		                                UPPER(SUBSTRING(B.CurrencyName,1,1))+LOWER(SUBSTRING(B.CurrencyName,2,LEN(B.CurrencyName)-1)) ""Currency"",
+		                                A.NetAmount,
+		                                CONVERT(VARCHAR, A.CreatedOn,23) ""CreatedOn"",
+		                                A.CreatedBy,
+		                                UPPER(SUBSTRING(ISNULL(D.FName,''),1,1)) + LOWER(SUBSTRING(ISNULL(D.FName,''),2,LEN(D.FName)-1)) 
+                                + ' ' + UPPER(SUBSTRING(ISNULL(D.LName,''),1,1)) + LOWER(SUBSTRING(ISNULL(D.LName,''),2,LEN(D.LName)-1)) ""CreatedByName"",
+		                                C.DocStatusName,
+                                        A.Remarks
+                                FROM	ApInvoice_Hdr A
+		                                LEFT JOIN CurrencyTypes B ON B.CurrencyCode=A.Currency
+		                                LEFT JOIN DocStatusEnum C ON C.DocStatusCode=A.[Status]
+		                                LEFT JOIN UserLogin D ON D.EmpId=A.CreatedBy AND D.ActiveUser='Y'
+                                WHERE	A.InvNo=@InvNo";
+
+                    Cmd = new SqlCommand(SqlTxt, Conn);
+                    Cmd.Parameters.AddWithValue("@InvNo", InvNum);
+                    Reader = Cmd.ExecuteReader();
+
+                    if (Reader.HasRows)
+                    {
+                        if (Reader.Read())
+                        {
+                            AP_Hdr.InvNo = Reader["InvNo"].ToString();
+                            AP_Hdr.Vendor_Id = Reader["Vendor_Id"].ToString();
+                            AP_Hdr.PONo = Reader["PONo"].ToString();
+                            AP_Hdr.GRPONo = Reader["GRPONo"].ToString();
+                            AP_Hdr.DocDate = Reader["DocDate"].ToString();
+                            AP_Hdr.DueDate = Reader["DueDate"].ToString();
+                            AP_Hdr.PostingDate = Reader["PostingDate"].ToString();
+                            AP_Hdr.Currency = Reader["Currency"].ToString();
+                            AP_Hdr.NetAmount = Convert.ToDecimal(Reader["NetAmount"].ToString());
+                            AP_Hdr.CreatedOn = Reader["CreatedOn"].ToString();
+                            AP_Hdr.CreatedBy = Reader["CreatedBy"].ToString();
+                            AP_Hdr.CreatedByName = Reader["CreatedByName"].ToString();
+                            AP_Hdr.Status = Reader["DocStatusName"].ToString();
+                            AP_Hdr.Remarks = Reader["Remarks"].ToString();
+
+                            Reader.Close();
+
+                            SqlTxt = @"SELECT	A.Id, 
+		                                        A.InvNo, 
+		                                        A.ItemCode, 
+		                                        A.Quantity,
+		                                        A.UnitPrice, 
+		                                        A.LineTotal,
+		                                        B.TaxName ""TaxCode"",
+		                                        A.RemarksDtl
+                                        FROM	ApInvoice_Dtl A
+		                                        LEFT JOIN TaxCodeMaster B ON A.TaxCode=B.TaxCode AND B.IsActive='Y'
+                                        WHERE	A.InvNo=@InvNo";
+
+                            Cmd = new SqlCommand(SqlTxt, Conn);
+                            Cmd.Parameters.AddWithValue("@InvNo", InvNum);
+                            Reader = Cmd.ExecuteReader();
+
+                            if (Reader.HasRows)
+                            {
+                                while (Reader.Read())
+                                {                                       //Openingup individual Obj ref variable.
+                                    AP_Dtl = new Cls_AccountPurchaseInvDtls();
+
+                                    AP_Dtl.Id = Convert.ToInt32(Reader["Id"].ToString());
+                                    AP_Dtl.InvNo = Reader["InvNo"].ToString();
+                                    AP_Dtl.ItemCode = Reader["ItemCode"].ToString();
+                                    AP_Dtl.Quantity = Convert.ToDecimal(Reader["Quantity"].ToString());
+                                    AP_Dtl.UnitPrice = Convert.ToDecimal(Reader["UnitPrice"].ToString());
+                                    AP_Dtl.LineTotal = Convert.ToDecimal(Reader["LineTotal"].ToString());
+                                    AP_Dtl.TaxCode = Reader["TaxCode"].ToString();
+                                    AP_Dtl.RemarksDtl = Reader["RemarksDtl"].ToString();
+
+                                    DtlList.Add(AP_Dtl);
+                                }
+                            }
+                            else
+                            {
+                                AP_Dtl = null;
+                                DtlList.Add(AP_Dtl);
+                            }
+
+                            Reader.Close();
+
+                            WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.OK;
+                            AP_Hdr.ApInvDtls = DtlList;
+                            Res.ApHdr = AP_Hdr;
+                            Res.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+                            Res.ResponseMsg = "Data Fetched Successfully!";
+                        }
+                    }
+                    else
+                    {
+                        WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.NotFound;
+                        Res.StatusCode = Convert.ToInt32(HttpStatusCode.NotFound);
+                        Res.ResponseMsg = "No Record Found On A/P Invoice: " + InvNum;
+                    }
+                }
+                else
+                {
+                    throw new Exception("A/P Invoice number is not present in the query string! Please send a valid invoice number.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.InternalServerError;
+                Res.ResponseMsg = ex.Message;
+                Res.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+            }
+            finally
+            {
+                Conn.Close();
+                Reader = null;
+            }
+
+            return Res;
+        }
+
+        public Cls_Response UpdateAPInv(Cls_UpdateAPInv sendObj)
+        {
+            Cls_UpdateAPInv UpdateAp = new Cls_UpdateAPInv();
+            Cls_Response Res = new Cls_Response();
+
+            return Res;
+        }
     }
 }

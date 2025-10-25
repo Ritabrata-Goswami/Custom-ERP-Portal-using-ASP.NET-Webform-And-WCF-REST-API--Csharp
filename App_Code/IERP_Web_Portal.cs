@@ -21,6 +21,7 @@ namespace ERP_Web_Portal_WCF
             ResponseFormat = WebMessageFormat.Json)]
         Cls_Response DoWork();
 
+
         [OperationContract]
         [WebInvoke(
             Method = "POST",
@@ -54,6 +55,32 @@ namespace ERP_Web_Portal_WCF
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json)]
         Cls_ShowGRPO GetGRPO(string GrpoNum);
+
+        [OperationContract]
+        [WebInvoke(
+            Method = "POST",
+            UriTemplate = "/PostAPInv",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        Cls_Response PostApInv(Cls_AccountPurchaseInvHdr A_Cls_ApInv);
+
+        [OperationContract]
+        [WebInvoke(
+            Method = "GET",
+            UriTemplate = "/GetAPInv?InvNum={InvNum}",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
+        Cls_ShowAccountPurchaseInv GetAPInvoice(string InvNum);
+
+        [OperationContract]
+        [WebInvoke(
+            Method = "PATCH",
+            UriTemplate = "/UpdateAPInv",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        Cls_Response UpdateAPInv(Cls_UpdateAPInv sendObj);
 
 
 
