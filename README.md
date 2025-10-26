@@ -13,7 +13,7 @@ Like, Master Data (Vendor Master Data, Item Master Data, Warehouse Master Data) 
     Untill all the items are received the GRPO remains open. If all are received the it becomes closed.)
 4. Inventory
     (After items received it goes to the selected warehouses. That decision is made internally by company and here the implementation of Warehouse Master Data comes in.)
-5. Account Purchase Invoice (A/P invoice)
+5. Account Payable Invoice (A/P invoice)
     (After Vendor sends the invoice for to payment of those received items, company pays to vendor and records all those details including per unit price, Tax, discount, Vendor Code, Item Code...etc in that
     A/P Invoice which is store in that ERP Database.)
 ------------------------
