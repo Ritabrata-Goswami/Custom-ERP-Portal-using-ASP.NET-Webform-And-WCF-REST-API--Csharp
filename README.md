@@ -18,4 +18,4 @@ Like, Master Data (Vendor Master Data, Item Master Data, Warehouse Master Data) 
     A/P Invoice which is store in that ERP Database.)
 ------------------------
 
-Here i implemented this flow in that ASP.NET Webform portal. The Portal also used legacy WCF REST API service to exchange the DB transaction of PO, GRPO, A/P invoice.  
+Here i implemented this flow in ASP.NET Webform portal and it's database. Database files also given in SQL folder. The Portal also used legacy WCF REST API service to exchange the DB transaction of PO, GRPO, A/P invoice.  
